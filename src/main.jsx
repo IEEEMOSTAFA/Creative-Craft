@@ -1,0 +1,125 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router";
+// import Login from './components/Login/Login.jsx';
+import Footer from './components/Login/Login.jsx';
+import Register from './components/Register/Register.jsx';
+import Banner from './components/Banner/Banner.jsx';
+import Home from './components/Home/Home.jsx';
+import Roots from './Roots.jsx';
+import Errorpage from './components/Errorpage/Errorpage.jsx';
+
+import MyCraft from './components/MyCraft/MyCraft.jsx';
+import MyArt from './components/MyArt/MyArt.jsx';
+import Login from './components/Login/Login.jsx';
+import AddCraft from './components/AddCraft/AddCraft.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
+// import AuthProvider from './providers/AuthProvider.jsx';
+
+
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Roots></Roots>,
+    errorElement:<Errorpage></Errorpage>,
+    children: [
+      {
+        path: "/", 
+        element: <Home></Home>
+      },
+      {
+        path: "login", // this means "/"
+        element: <Login></Login>
+      },
+      {
+        path: "register", // this means "/"
+        element: <Register></Register>
+      }, 
+      
+      {
+        path: "addCraft", // this means "/"
+        element: <AddCraft></AddCraft>
+      },
+      
+      {
+        path: "myCraft", // this means "/"
+        element: <MyCraft></MyCraft>
+      },
+      {
+        path: "myArt", // this means "/"
+        element: <MyArt></MyArt>
+      },
+          
+    ]
+  },
+]);
+
+
+
+
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//    <RouterProvider router={router} />
+//   </StrictMode>,
+// )
+
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+
+    <AuthProvider>
+    <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
+
+    {/* <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider> */}
+    {/* <AuthProvider> */}
+      {/* <RouterProvider router={router} /> */}
+    {/* </AuthProvider> */}
+  </StrictMode>,
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { StrictMode } from 'react';
+// import { createRoot } from 'react-dom/client';
+// import './index.css';
+// import router from './routes/router.jsx';
+// import { RouterProvider } from 'react-router-dom';
+// import AuthProvider from './providers/AuthProvider.jsx';
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//     <AuthProvider>
+//       <RouterProvider router={router} />
+//     </AuthProvider>
+//   </StrictMode>,
+// );

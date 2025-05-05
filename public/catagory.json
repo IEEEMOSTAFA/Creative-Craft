@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "estate_title": "Military Base",
+        "segment_name": "Residential",
+        "description": "A stunning luxury villa with modern amenities and breathtaking views.",
+        "price": 2500000,
+        "status": "sale",
+        "area": "5000 sq ft",
+        "location": "Beverly Hills, California",
+        "facilities": ["living room", "swimming pool", "Kitchen", "home theater", "gym"],
+        "image": "https://i.ibb.co/3YjtMbtt/Military-Base.jpg",
+        "view_property": "https://example.com/properties/villa1"
+    },
+    {
+        "id": 2,
+        "estate_title": "Court House",
+        "segment_name": "Residential",
+        "description": "A cozy and modern apartment located in the heart of the city.",
+        "price": 1200,
+        "status": "rent",
+        "area": "1200 sq ft",
+        "location": "Downtown, New York",
+        "facilities": ["living room", "Kitchen", "balcony"],
+        "image": "https://i.ibb.co/HpBNGJtS/Bd-Court-House.jpg",
+        "view_property": "https://example.com/properties/apartment1"
+    },
+    {
+        "id": 3,
+        "estate_title": "Public Park",
+        "segment_name": "Residential",
+        "description": "Perfect family home with a spacious backyard and modern facilities.",
+        "price": 450000,
+        "status": "sale",
+        "area": "3000 sq ft",
+        "location": "Suburbs, Texas",
+        "facilities": ["living room", "Kitchen", "garden", "garage"],
+        "image": "https://i.ibb.co/3mD8RqKd/Public-Park.jpg",
+        "view_property": "https://example.com/properties/home1"
+    },
+    {
+        "id": 4,
+        "estate_title": "Community Center",
+        "segment_name": "Residential",
+        "description": "Enjoy the serene beachfront views from this luxurious condo.",
+        "price": 800000,
+        "status": "sale",
+        "area": "2200 sq ft",
+        "location": "Miami, Florida",
+        "facilities": ["living room", "Kitchen", "balcony", "swimming pool"],
+        "image": "https://i.ibb.co/VWSb5VFg/Community-Center.jpg",
+        "view_property": "https://example.com/properties/condo1"
+    },
+    {
+        "id": 5,
+        "estate_title": "Health Center",
+        "segment_name": "Residential",
+        "description": "A stylish loft with industrial design elements, perfect for urban living.",
+        "price": 1800,
+        "status": "rent",
+        "area": "1500 sq ft",
+        "location": "City Center, Chicago",
+        "facilities": ["living room", "Kitchen", "open plan"],
+        "image": "https://i.ibb.co/8D1wjtrC/Health-Center.jpg",
+        "view_property": "https://example.com/properties/loft1"
+    }
+]

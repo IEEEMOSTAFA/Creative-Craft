@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "1",
+        "image": "https://i.ibb.co/cH20YCr/wooden-art-pieces-painting-process.jpg",
+        "item_name": "Handmade Vase",
+        "price": 45,
+        "rating": 4.5,
+        "customization": "Yes",
+        "stockStatus": "In stock"
+    },
+    {
+        "_id": "2",
+        "image": "https://i.ibb.co/cH20YCr/wooden-art-pieces-painting-process.jpg",
+        "item_name": "Wooden Frame",
+        "price": 30,
+        "rating": 4.2,
+        "customization": "No",
+        "stockStatus": "Made to Order"
+    }
+]
