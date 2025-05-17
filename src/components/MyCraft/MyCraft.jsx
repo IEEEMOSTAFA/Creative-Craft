@@ -1,77 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyCraft = () => {
-    const [crafts, setCrafts] = useState([]);
-    const [filter, setFilter] = useState('All');
-    const [allCrafts, setAllCrafts] = useState([]);
+    const [item, setItem] = useState([]);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch('/craft.json') // assuming craft.json is in the public folder
-            .then(res => res.json())
-            .then(data => {
-                setAllCrafts(data);
-                setCrafts(data);
-            });
-    }, []);
-
-    useEffect(() => {
-        if (filter === 'All') {
-            setCrafts(allCrafts);
-        } else {
-            const filtered = allCrafts.filter(item => item.customization === filter);
-            setCrafts(filtered);
+        if (user?.email) {
+            fetch(`http://localhost:5000/myCraft/${user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setItem(data);
+                });
         }
-    }, [filter, allCrafts]);
-
-    const handleDelete = (id) => {
-        console.log('Delete item with ID:', id);
-        const remaining = crafts.filter(craft => craft._id !== id);
-        setCrafts(remaining);
-        setAllCrafts(remaining);
-    };
-
-    const handleUpdate = (id) => {
-        console.log('Update item with ID:', id);
-        // Navigate to update form or open modal
-    };
+    }, [user]);
 
     return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">My Craft Gallery</h1>
-
-            {/* Filter Dropdown */}
-            <div className="mb-4">
-                <label className="mr-2 font-medium">Filter by Customization:</label>
-                <select 
-                    className="border rounded px-2 py-1"
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                >
-                    <option value="All">All</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+        <div>
+            <p className="text-2xl font-bold mb-4">This is my product</p>
 
             {/* Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {crafts.map(craft => (
+                {item.map((craft) => (
                     <div key={craft._id} className="border rounded-lg p-4 shadow hover:shadow-lg">
-                        <img src={craft.image} alt={craft.item_name} className="w-full h-40 object-cover rounded" />
-                        <h2 className="text-lg font-semibold mt-2">{craft.item_name}</h2>
+                        <img src={craft.imgUrl} alt={craft.name} className="w-full h-40 object-cover rounded" />
+                        <h2 className="text-lg font-semibold mt-2">{craft.name}</h2>
+                        <p><strong>Brand:</strong> {craft.brandName}</p>
                         <p><strong>Price:</strong> ${craft.price}</p>
                         <p><strong>Rating:</strong> {craft.rating} ⭐</p>
-                        <p><strong>Customization:</strong> {craft.customization}</p>
-                        <p><strong>Stock Status:</strong> {craft.stockStatus}</p>
+                        <p><strong>Type:</strong> {craft.type}</p>
                         <div className="flex justify-between mt-3">
-                            <button 
-                                onClick={() => handleUpdate(craft._id)} 
+                           <Link to={`/products/${craft._id}`}>
+                            <button
+                                // onClick={() => handleUpdate(craft._id)} 
                                 className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                             >
                                 Update
                             </button>
-                            <button 
-                                onClick={() => handleDelete(craft._id)} 
+                           </Link>
+                            <button
+                                // onClick={() => handleDelete(craft._id)} 
                                 className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                             >
                                 Delete
@@ -85,3 +55,31 @@ const MyCraft = () => {
 };
 
 export default MyCraft;
+
+
+
+
+
+
+
+
+
+// // 
+// // gias-uddin-swe      b9-crud-client
+// // https://github.com/gias-uddin-swe/B9-Crud-Server
+// // https://github.com/gias-uddin-swe/B9-Crud-client
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

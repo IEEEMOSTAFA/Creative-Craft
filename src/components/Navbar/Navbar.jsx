@@ -92,16 +92,17 @@
 
 // import  { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+// import AuthProvider, { AuthContext } from '../../providers/AuthProvider';
 import { useContext } from 'react';
-// import { AuthContext } from '../../providers/AuthProvider';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  // const {user, logOut} = AuthProvider() || {};
 
   const handleSignOut = () => {
     // logOut()
-    logOut
+    logOut()
       .then(() => console.log('User signed out successfully'))
       .catch((error) => console.error('Error signing out:', error));
   };

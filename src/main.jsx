@@ -19,6 +19,7 @@ import MyArt from './components/MyArt/MyArt.jsx';
 import Login from './components/Login/Login.jsx';
 import AddCraft from './components/AddCraft/AddCraft.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 // import AuthProvider from './providers/AuthProvider.jsx';
 
 
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
         path: "myArt", // this means "/"
         element: <MyArt></MyArt>
       },
+      {
+        path: "products/:id", // this means "/"
+        element: <ProductDetails></ProductDetails>
+        // loader: productloader
+      },
           
     ]
   },
@@ -79,12 +85,7 @@ createRoot(document.getElementById('root')).render(
     <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
 
-    {/* <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider> */}
-    {/* <AuthProvider> */}
-      {/* <RouterProvider router={router} /> */}
-    {/* </AuthProvider> */}
+    
   </StrictMode>,
 );
 
