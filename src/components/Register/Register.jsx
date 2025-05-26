@@ -152,7 +152,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 // import Navbar from '../Shared/Navbar/Navbar';
 // import { AuthContext } from '../../providers/AuthProvider';
-
+import Swal from "sweetalert2";
 const Register = () => {
     const { createUser } = useContext(AuthContext);
 
@@ -165,17 +165,25 @@ const Register = () => {
 
     // Handle form submission
     const onSubmit = (data) => {
-        console.log(data); // Form data
-
-        // Create user using AuthContext
-        createUser(data.email, data.password)
-            .then((result) => {
-                console.log(result.user); // User created successfully
-            })
-            .catch((error) => {
-                console.error(error); // Handle error
+    // Create user using AuthContext
+    createUser(data.email, data.password)
+        .then((result) => {
+            console.log(result.user); // User created successfully
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Registration successful!',
             });
-    };
+        })
+        .catch((error) => {
+            console.error(error); // Handle error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: error.message || 'Registration failed!',
+            });
+        });
+};
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-100">

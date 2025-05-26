@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddCraft = ({ update }) => {
-  const { user } = useContext(AuthContext); // ✅ Correct
+  const { user } = useContext(AuthContext);
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -28,17 +29,19 @@ const AddCraft = ({ update }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("Craft added successfully:", data);
-        if(data?.insertedId){
-          alert("Craft added successfully");
+        if (data?.insertedId) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Craft added successfully',
+          });
+          form.reset(); // Reset form after successful submission
+          // if (typeof update === "function") update(); // Call update callback if provided
         }
-        // if (typeof update === "function") update(); // Optional: call update callback
-        // form.reset(); // ✅ Reset form after submission
       })
       .catch((err) => {
         console.error("Failed to add craft:", err);
       });
-      console.log("info", info);
-      
   };
 
   return (

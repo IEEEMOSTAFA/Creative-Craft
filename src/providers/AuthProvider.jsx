@@ -3,21 +3,27 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
 import PropTypes from 'prop-types';
+import { GithubAuthProvider } from 'firebase/auth/web-extension';
 
 // export  const AuthContext = createContext(null);
 export const AuthContext = createContext(null);
 
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     // Sign In With Google
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const signInWithGoogle = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
+    }
+    const signInWithGithub = () => {
+        setLoading(true);
+        return signInWithPopup(auth, githubProvider); // <-- fixed here
     }
 
     // Create User
@@ -58,6 +64,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         signInWithGoogle,
+        signInWithGithub,
         createUser,
         signIn,
         logOut,
@@ -75,7 +82,7 @@ const AuthProvider = ({children}) => {
 
 // Define PropTypes For AuthProvider
 AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired, 
+    children: PropTypes.node.isRequired,
 };
 
 export default AuthProvider;

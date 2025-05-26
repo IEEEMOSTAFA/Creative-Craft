@@ -20,6 +20,7 @@ import Login from './components/Login/Login.jsx';
 import AddCraft from './components/AddCraft/AddCraft.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
+import ProtectedRoute from './routes/ProtectedRoute.jsx';
 // import AuthProvider from './providers/AuthProvider.jsx';
 
 
@@ -29,10 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Roots></Roots>,
-    errorElement:<Errorpage></Errorpage>,
+    errorElement: <Errorpage></Errorpage>,
     children: [
       {
-        path: "/", 
+        path: "/",
         element: <Home></Home>
       },
       {
@@ -42,16 +43,22 @@ const router = createBrowserRouter([
       {
         path: "register", // this means "/"
         element: <Register></Register>
-      }, 
-      
+      },
+
       {
         path: "addCraft", // this means "/"
-        element: <AddCraft></AddCraft>
+        element: <ProtectedRoute>
+          <AddCraft></AddCraft>
+        </ProtectedRoute>
+
+
       },
-      
+
       {
         path: "myCraft", // this means "/"
-        element: <MyCraft></MyCraft>
+        element: <ProtectedRoute> <MyCraft></MyCraft></ProtectedRoute>
+        
+        
       },
       {
         path: "myArt", // this means "/"
@@ -62,7 +69,7 @@ const router = createBrowserRouter([
         element: <ProductDetails></ProductDetails>
         // loader: productloader
       },
-          
+
     ]
   },
 ]);
@@ -82,10 +89,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
 
     <AuthProvider>
-    <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
 
-    
+
   </StrictMode>,
 );
 

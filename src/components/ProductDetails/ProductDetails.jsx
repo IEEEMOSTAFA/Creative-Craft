@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from "sweetalert2";
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
@@ -16,7 +17,7 @@ const ProductDetails = () => {
     console.log(id);
 
 
-    const handleUpdate = (e) =>{
+    const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target;
 
@@ -28,35 +29,25 @@ const ProductDetails = () => {
         const rating = form.rating.value;
 
         const info = { name, brandName, price, imgUrl, type, rating };
-        fetch(`http://localhost:5000/updateProduct/${id}`,{
+        fetch(`http://localhost:5000/updateProduct/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(info)
-        } )
-        .then(res => res.json())
-        .then((data) =>{
-           console.log("Craft updated successfully:", data);
         })
+            .then(res => res.json())
+            .then((data) => {
+                console.log("Craft updated successfully:", data);
 
-        // fetch(`http://localhost:5000/update/${id}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(info)
-        // })
-            // .then((res) => res.json())
-            // .then((data) => {
-            //     console.log("Craft updated successfully:", data);
-            //     if (data?.modifiedCount > 0) {
-            //         alert("Craft updated successfully");
-            //     }
-            // })
-            // .catch((err) => {
-            //     console.error("Failed to update craft:", err);
-            // });
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Craft updated successfully!',
+                });
+            })
+
+
 
     }
 
@@ -74,7 +65,7 @@ const ProductDetails = () => {
                 <input defaultValue={product.price} type="number" name="price" className="input input-bordered" placeholder="Price" required />
 
                 <label className="label">Image URL</label>
-                <input defaultValue={product.imgUrl} type="text" name="imgUrl" className="input input-bordered" placeholder="Image URL" required />
+                <input defaultValue={product.imgUrl} type="text" name="imgUrl" className="input input-bordered " placeholder="Image URL" required />
 
                 <label className="label">Type</label>
                 <input defaultValue={product.type} type="text" name="type" className="input input-bordered" placeholder="Type" required />
