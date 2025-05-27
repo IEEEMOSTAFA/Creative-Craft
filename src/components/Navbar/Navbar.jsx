@@ -90,12 +90,12 @@ const Navbar = () => {
         )}
 
 
-        {/* <img
+        <img
             src="https://i.ibb.co/ZpxW9pT9/textile-img.jpg"
             // src={user.imgUrl}
             alt="Textile Art Logo"
             className="h-8 w-8 rounded-full"
-          /> */}
+          />
         {user ? (
           <button onClick={handleSignOut} className="btn btn-warning">Sign Out</button>
         ) : (

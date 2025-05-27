@@ -3,7 +3,8 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
 import PropTypes from 'prop-types';
-import { GithubAuthProvider } from 'firebase/auth/web-extension';
+// import { GithubAuthProvider } from 'firebase/auth/web-extension';
+import { GithubAuthProvider } from "firebase/auth";
 
 // export  const AuthContext = createContext(null);
 export const AuthContext = createContext(null);
@@ -16,6 +17,8 @@ const AuthProvider = ({ children }) => {
     // Sign In With Google
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    // const provider = new GithubAuthProvider();
+  
 
     const signInWithGoogle = () => {
         setLoading(true);
