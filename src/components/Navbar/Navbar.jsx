@@ -19,7 +19,7 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li><NavLink to="/" className="hover:text-blue-500">Home</NavLink></li>
-      <li><NavLink to="myArt" className="hover:text-blue-500">All Art</NavLink></li>
+      <li><NavLink to="alArt" className="hover:text-blue-500">All Art</NavLink></li>
       <li><NavLink to="addCraft" className="hover:text-blue-500">Add Craft</NavLink></li>
       <li><NavLink to="myCraft" className="hover:text-blue-500">My Art&Craft</NavLink></li>
 
@@ -53,19 +53,19 @@ const Navbar = () => {
           {/* Replace with your actual image path */}
           <img
             src="https://i.ibb.co/ZpxW9pT9/textile-img.jpg"
-           
+
             alt="Textile Art Logo"
             className="h-8 w-8 rounded-full"
           />
 
 
 
-          
+
 
 
           Textile Art
         </a>
-        
+
       </div>
 
       {/* Desktop Menu */}
@@ -79,23 +79,18 @@ const Navbar = () => {
 
 
       <div className="navbar-end flex items-center gap-3 mx-2">
-        {user && user.imgUrl && (
+        {user && user.photoURL && (
           <img
-            src={user.imgUrl}
+            src={user.photoURL}
             alt={user.displayName || "User"}
             className="h-8 w-8 rounded-full border-2 border-blue-500"
             title={user.displayName || 'User'}
-            onError={e => { e.target.style.display = 'none'; }} // Hide if broken
+            onError={e => { e.target.src = "https://i.ibb.co/ZpxW9pT9/textile-img.jpg"; }}
           />
         )}
 
 
-        <img
-            src="https://i.ibb.co/ZpxW9pT9/textile-img.jpg"
-            // src={user.imgUrl}
-            alt="Textile Art Logo"
-            className="h-8 w-8 rounded-full"
-          />
+        
         {user ? (
           <button onClick={handleSignOut} className="btn btn-warning">Sign Out</button>
         ) : (

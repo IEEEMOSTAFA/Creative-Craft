@@ -13,7 +13,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const { user, setUser } = useState(null);
+    // const { user, setUser } = useState(null);
 
     const {
         register,
@@ -42,7 +42,7 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user);
-                setUser(result.user);
+                // setUser(result.user);
                   navigate(location?.state ? location.state : '/');
             })
 
@@ -58,7 +58,7 @@ const Login = () => {
         signInWithGithub()
             .then(result => {
                 console.log(result.user);
-                setUser(result.user);
+                // setUser(result.user);
                   navigate(location?.state ? location.state : '/');
             })
 

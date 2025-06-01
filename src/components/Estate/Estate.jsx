@@ -17,13 +17,13 @@ const Estate = ({ estates }) => {
                     {estates.map((estate) => {
                         const {
                             id,
-                            estate_title,
-                            image,
-                            price,
-                            location,
-                            status,
-                            area,
+                            Name,
+                            BrandName,
+                            Price,
+                            imgUrl,
+                            Type,
                             facilities,
+                            viewProperty
                         } = estate;
 
                         return (
@@ -32,25 +32,25 @@ const Estate = ({ estates }) => {
                                 className="card bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                             >
                                 <img
-                                    src={image}
-                                    alt={estate_title}
+                                    src={ imgUrl}
+                                    alt={Name}
                                     className="w-full h-48 object-cover"
                                 />
                                 <div className="p-6">
                                     <h2 className="text-xl font-bold text-gray-800 mb-2">
-                                        {estate_title}
+                                        {Name}
                                     </h2>
                                     <p className="text-gray-600 mb-1">
-                                        <strong>Price:</strong> ${price}
+                                        <strong>Price:</strong> ${Price}
                                     </p>
                                     <p className="text-gray-600 mb-1">
-                                        <strong>Location:</strong> {location}
+                                        <strong>ImgUrl:</strong> {imgUrl}
                                     </p>
                                     <p className="text-gray-600 mb-1">
-                                        <strong>Status:</strong> {status}
+                                        <strong>BrandName:</strong> {BrandName}
                                     </p>
                                     <p className="text-gray-600 mb-4">
-                                        <strong>Area:</strong> {area}
+                                        <strong>Type:</strong> {Type}
                                     </p>
                                     <div className="mb-4">
                                         <h4 className="text-lg font-semibold text-gray-700 mb-2">
@@ -68,7 +68,7 @@ const Estate = ({ estates }) => {
                                         </ul>
                                     </div>
                                     <Link
-                                        to={`/property/${id}`} // Use Link for navigation
+                                        to={viewProperty} // Use Link for navigation
                                         className="btn btn-primary w-full mt-4 block text-center"
                                     >
                                         View Property

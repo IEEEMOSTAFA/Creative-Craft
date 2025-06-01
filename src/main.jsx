@@ -15,12 +15,13 @@ import Roots from './Roots.jsx';
 import Errorpage from './components/Errorpage/Errorpage.jsx';
 
 import MyCraft from './components/MyCraft/MyCraft.jsx';
-import MyArt from './components/MyArt/MyArt.jsx';
+
 import Login from './components/Login/Login.jsx';
 import AddCraft from './components/AddCraft/AddCraft.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
+import AlArt from './components/AlArt/AlArt.jsx';
 // import AuthProvider from './providers/AuthProvider.jsx';
 
 
@@ -61,8 +62,8 @@ const router = createBrowserRouter([
         
       },
       {
-        path: "myArt", // this means "/"
-        element: <MyArt></MyArt>
+        path: "alArt", // this means "/"
+        element: <AlArt></AlArt>
       },
       {
         path: "products/:id", // this means "/"
@@ -75,59 +76,12 @@ const router = createBrowserRouter([
 ]);
 
 
-
-
-
-// createRoot(document.getElementById('root')).render(
-//   <StrictMode>
-//    <RouterProvider router={router} />
-//   </StrictMode>,
-// )
-
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-
     <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router} />
     </AuthProvider>
-
-
-  </StrictMode>,
+  </StrictMode>
 );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { StrictMode } from 'react';
-// import { createRoot } from 'react-dom/client';
-// import './index.css';
-// import router from './routes/router.jsx';
-// import { RouterProvider } from 'react-router-dom';
-// import AuthProvider from './providers/AuthProvider.jsx';
-
-// createRoot(document.getElementById('root')).render(
-//   <StrictMode>
-//     <AuthProvider>
-//       <RouterProvider router={router} />
-//     </AuthProvider>
-//   </StrictMode>,
-// );
